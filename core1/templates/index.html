@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotería Mexicana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .tabla {
+            display: grid;
+            grid-template-columns: repeat({{ y }}, 100px);
+            grid-template-rows: repeat({{ x }}, 100px);
+            gap: 5px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="titulo">    
+        <h1>Lotería Mexicana</h1>
+    </div>
+    <div class="tabla">
+        {% for celda in celdas %}
+        <div class="celda" style="background-color: {{ celda.color }};">
+            {{celda.cartas}}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
